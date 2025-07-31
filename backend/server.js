@@ -29,11 +29,22 @@ app.use('/uploads', express.static('uploads'));
 // Middleware
 app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
+const allowedOrigins = ['https://cricket-run-scorer-k4yu-git-main-misel-patels-projects.vercel.app'];
+
 app.use(cors({
-  origin: '*',
+  origin: function (origin, callback) {
+    // allow requests with no origin (like curl or mobile apps)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
