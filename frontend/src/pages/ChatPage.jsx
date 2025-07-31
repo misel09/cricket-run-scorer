@@ -20,7 +20,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const API = 'http://localhost:5000';
+const API = 'https://cricket-run-scorer-git-main-misel-patels-projects.vercel.app/';
 
 const ChatPage = () => {
   const userEmail = localStorage.getItem('userEmail');
