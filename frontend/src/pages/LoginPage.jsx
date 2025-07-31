@@ -26,7 +26,7 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post('http://cricket-run-scorer-mk3xfot95-misel-patels-projects.vercel.app/login', {
         email,
         password,
       });
